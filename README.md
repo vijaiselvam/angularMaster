@@ -1,0 +1,2 @@
+# angularMaster
+SeedApp for Angular
