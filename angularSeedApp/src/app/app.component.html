@@ -1,9 +1,25 @@
-<div class="flex-container">
+<div class="example-wrapper">
+  <div style="margin-bottom: 5px;">
+    <button (click)="onBtNormal()">1 - Grouping Active</button>
+    <button (click)="onBtPivotMode()">
+      2 - Grouping Active with Pivot Mode
+    </button>
+    <button (click)="onBtFullPivot()">
+      3 - Grouping Active with Pivot Mode and Pivot Active
+    </button>
+  </div>
+
   <ag-grid-angular
-  style="width: 100%; height: 500px;"
-  class="ag-theme-alpine"
-  [columnDefs]="columnDefs"
-  [rowData]="rowData"
-  >
-</ag-grid-angular>
+    #agGrid
+    style="width: 100%; height: 100%;"
+    id="myGrid"
+    class="ag-theme-alpine"
+    [modules]="modules"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [autoGroupColumnDef]="autoGroupColumnDef"
+    [sideBar]="sideBar"
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
 </div>
