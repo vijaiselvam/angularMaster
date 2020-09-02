@@ -10,14 +10,14 @@
   </div>
 
   <ag-grid-angular
-    #agGrid
-    style="width: 100%; height: 100%;"
-    id="myGrid"
+    style="width: 100%; height: 800px;"
     class="ag-theme-alpine"
     [modules]="modules"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
+    [enableRangeSelection]="true"
     [autoGroupColumnDef]="autoGroupColumnDef"
+    [statusBar]="statusBar"
     [sideBar]="sideBar"
     [rowData]="rowData"
     (gridReady)="onGridReady($event)"

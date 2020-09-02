@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
-import { Module } from '@ag-grid-enterprise/all-modules';
-import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
+import { Module, AllModules } from '@ag-grid-enterprise/all-modules';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
@@ -14,22 +10,18 @@ import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ag Grid Basics';
+  title = 'ag Grid with enterprise features';
 
   public gridApi;
   public gridColumnApi;
 
-  public modules: Module[] = [
-    ClientSideRowModelModule,
-    RowGroupingModule,
-    MenuModule,
-    ColumnsToolPanelModule,
-  ];
+  public modules: Module[] = AllModules;
   public columnDefs;
   public defaultColDef;
   public autoGroupColumnDef;
   public sideBar;
   public rowData: any;
+  public statusBar;
 
   constructor(private http: HttpClient) {
     this.columnDefs = [
@@ -67,6 +59,21 @@ export class AppComponent {
     };
     this.autoGroupColumnDef = { minWidth: 250 };
     this.sideBar = 'columns';
+    this.statusBar = {
+      statusPanels: [
+        {
+          statusPanel: 'agTotalAndFilteredRowCountComponent',
+          align: 'left',
+        },
+        {
+          statusPanel: 'agTotalRowCountComponent',
+          align: 'center',
+        },
+        { statusPanel: 'agFilteredRowCountComponent' },
+        { statusPanel: 'agSelectedRowCountComponent' },
+        { statusPanel: 'agAggregationComponent' },
+      ],
+    };
   }
 
   onBtNormal() {
