@@ -1,0 +1,12 @@
+<div class="my-wrapper" #mywrap>
+    <h1 style="padding: 20px;">My Custom Detail</h1>
+    <div>randomId: {{randomId}}</div>
+    <div *ngIf="recordsAvailable">
+    <div>Test Data</div>
+    <div>Title: {{ data.title }}</div>
+    <div style="border: 1px solid black;">Body: {{data.body}}</div>
+    </div>
+    <div *ngIf="!recordsAvailable">
+    Error manually created
+    </div>    
+  </div>
