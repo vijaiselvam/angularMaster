@@ -5,8 +5,11 @@
     <div>Test Data</div>
     <div>Title: {{ data.title }}</div>
     <div style="border: 1px solid black;">Body: {{data.body}}</div>
+    <div>Lorem Data: {{loremData}}</div>
+    <div style="color: green">Completed</div>
     </div>
     <div *ngIf="!recordsAvailable">
-    Error manually created
+    <div>API Retrival Error Created</div>
+    <div style="color: green">Completed</div>
     </div>    
   </div>
