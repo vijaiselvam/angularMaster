@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DetailCellRendererComponent } from './detail-cell-renderer/detail-cell-renderer.component';
 import { AgGridModule } from '@ag-grid-community/angular';
+import { AgGridExternalFilterComponent } from './ag-grid-external-filter/ag-grid-external-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DetailCellRendererComponent
+    DetailCellRendererComponent,
+    AgGridExternalFilterComponent
   ],
   imports: [
     BrowserModule,

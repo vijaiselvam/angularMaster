@@ -14,7 +14,8 @@ export class DetailCellRendererComponent implements OnInit, ICellRendererAngular
   private id: any;
   public randomId;
   private heightUpdated: boolean = false;
-  public recordsAvailable: boolean = false;
+  public isApiLoaded: boolean;
+  public isTableError: boolean;
   public loremData;
   public params;
   public lorem1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat finibus nibh, nec pulvinar turpis semper eget. Etiam iaculis ante vitae eros commodo, sit amet maximus dolor aliquet. Aliquam ipsum tortor, gravida eget eleifend ac, luctus et massa. Maecenas egestas vel lacus nec condimentum. Donec blandit augue justo, eget condimentum urna ornare eget. Donec malesuada euismod eros, et aliquet libero finibus sed. Morbi turpis tortor, venenatis semper felis eu, finibus gravida leo. Sed in sapien et augue laoreet viverra id vel est.`
@@ -49,7 +50,10 @@ export class DetailCellRendererComponent implements OnInit, ICellRendererAngular
   ngOnInit() {
     console.log('oninit');
     this.data = {};
-    this.getDatas();
+    // setTimeout(() => {
+      this.getDatas();
+    // }, 2000);
+    
   }
 
   getDatas() {
@@ -58,7 +62,8 @@ export class DetailCellRendererComponent implements OnInit, ICellRendererAngular
     this.http
       .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .subscribe(data => {
-        this.recordsAvailable = true;
+        this.isApiLoaded = true;
+        this.isTableError = false;
         this.data = data;
         if(this.randomId < 3) {
           this.loremData = this.lorem1;
@@ -67,6 +72,11 @@ export class DetailCellRendererComponent implements OnInit, ICellRendererAngular
         } else {
           this.loremData = this.lorem3;
         }
+      }, (err) => {
+        this.isTableError = true;
+        this.isApiLoaded = true;
+      }, () => {
+
       });
   }
 
